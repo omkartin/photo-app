@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center">Albums</h1>
   <div class="grid-container">
-    <div  *ngFor="let album of userAlbums">
+    <div  *ngFor="let album of userAlbums | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
       <div>
         <a href="/photos/{{album.id}}">
           <img src="{{album.thumbNailUrl}}" alt="Generic placeholder thumbnail">
@@ -12,4 +12,5 @@
       </div>
     </div>
   </div>
+  <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
 </div>

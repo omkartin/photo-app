@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center">Photos</h1>
   <div class="grid-container">
-    <div  *ngFor="let photo of userAlbumPhotos">
+    <div  *ngFor="let photo of userAlbumPhotos | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
       <div>
         <img src="{{photo.thumbnailUrl}}" alt="Generic placeholder thumbnail" (click)="openImageModal(photo)">
       </div>
@@ -10,6 +10,7 @@
       </div>
     </div>
   </div>
+  <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
 </div>
 
 <div id="photoModal" class="modal">
