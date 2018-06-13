@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="text-center">Photos</h1>
+  <div class="grid-container">
+    <div  *ngFor="let photo of userAlbumPhotos">
+      <div>
+        <img src="{{photo.thumbnailUrl}}" alt="Generic placeholder thumbnail" (click)="openImageModal($event, photo)">
+      </div>
+      <div class="caption">
+        <p>{{photo.title}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="photoModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <img src="{{photoUrl}}" alt="Generic placeholder thumbnail">
+    <p class="text-center"> {{photoTitle}}</p>
+    <span class="close" (click)="closeModal()">&times;</span>
+  </div>
+
+</div>

@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">Albums</h1>
+  <div class="grid-container">
+    <div  *ngFor="let album of userAlbums">
+      <div>
+        <a href="/photos/{{album.id}}">
+          <img src="{{album.thumbNailUrl}}" alt="Generic placeholder thumbnail">
+        </a>
+      </div>
+      <div class="caption">
+        <p>{{album.title}}</p>
+      </div>
+    </div>
+  </div>
+</div>
