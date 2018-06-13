@@ -15,24 +15,23 @@ export class PhotosComponent implements OnInit {
   photoTitle: string;
 
   constructor(private data: DataService, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.album$= params.id)
+    this.route.params.subscribe(params => this.album$= params.id);
   }
 
   ngOnInit() {
     this.data.getPhotos(this.album$).subscribe((photos) => {
-      this.userAlbumPhotos = photos
+      this.userAlbumPhotos = photos;
     })
   }
 
-  openImageModal(event, photoData) {
-    console.log('Ready to open image modal', photoData)
-    this.photoUrl = photoData.thumbnailUrl
-    this.photoTitle = photoData.title
+  openImageModal (photoData) {
+    this.photoUrl = photoData.thumbnailUrl;
+    this.photoTitle = photoData.title;
     var modal = document.getElementById('photoModal');
     modal.style.display = "block";
   }
 
-  closeModal() {
+  closeModal () {
     var modal = document.getElementById('photoModal');
     modal.style.display = "none";
   }

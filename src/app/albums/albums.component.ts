@@ -13,19 +13,16 @@ export class AlbumsComponent implements OnInit {
   user$: number;
   album$: number;
   constructor(private data: DataService, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.user$ = params.id)
+    this.route.params.subscribe(params => this.user$ = params.id);
   }
 
   ngOnInit() {
     this.data.getAlbums(this.user$).subscribe((albums) => {
       for (let album in albums) {
         console.log('this.userAlbum', albums[album])
-        this.data.getPhotos(albums[album].id).subscribe(adata => albums[album].thumbNailUrl = adata[0].thumbnailUrl)
+        this.data.getPhotos(albums[album].id).subscribe(adata => albums[album].thumbNailUrl = adata[0].thumbnailUrl);
       }
-
-      this.userAlbums = albums
-      console.log('this.userAlbum', this.userAlbums)
-    })
+      this.userAlbums = albums;
+    });
   }
-
 }
